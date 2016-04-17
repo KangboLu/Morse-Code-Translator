@@ -10,7 +10,7 @@ int main ()
     string morseRef[SIZE] = {"/", ".-","-...","-.-."};// Morse code reference(for now)
 
     string userInput = "abc eeee ab cb cd ec eeee ab c eeee ab ";// user input for testing(for now)
-    string userMorseInput = ".- -... -...";// user input for testing(for now)
+    string userMorseInput = ".- -... -... / .- ..";// user input for testing(for now)
     int linePosit = 0;
 
     // for loop for testing purpose only
@@ -58,16 +58,21 @@ int main ()
     istringstream morseToEngl(userMorseInput);
     cout << userMorseInput << endl;
 
-    int i = 0;
     while (morseToEngl >> currentMorse) {
-        cout << currentMorse << endl;
+        int i = 0;// counter for looping the morseRef array
+        int flag = 1;// flag for checking if the morse code exists in reference
         while (i < SIZE) {
-            if (currentMorse == morseRef[i])
+            if (currentMorse == morseRef[i]) {
                 cout << englishRef.at(i);
-            else
-                cout << "X";
+                flag = 0;
+                break;
+            }
             i++;
         }
+        // if not exist in reference, output capital "X"
+        if (flag)
+            cout << "X";
+        flag = 1;
     }
 
 }//end main
