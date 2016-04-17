@@ -1,12 +1,13 @@
 #include <iostream>
 #include <string>
-
+#include <sstream>
 using namespace std;
 
 int main ()
 {
+    const int SIZE = 4;
     string englishRef = " abc";// English letter for reference(for now)
-    string morseRef[4] = {"/", ".-","-...","-.-."};// Morse code reference(for now)
+    string morseRef[SIZE] = {"/", ".-","-...","-.-."};// Morse code reference(for now)
 
     string userInput = "abc eeee ab cb cd ec eeee ab c eeee ab ";// user input for testing(for now)
     string userMorseInput = ".- -... -...";// user input for testing(for now)
@@ -16,7 +17,7 @@ int main ()
     cout << "Testing: \n";
     for (int i = 0; i < userInput.length(); i++) {
 
-        cout << userInput.at(i) << " is ";
+        cout << userInput.at(i) << " is ";// output each letter with its morse reference
 
         int findPosit = englishRef.find(userInput.at(i));
         if (findPosit+1)
@@ -51,22 +52,22 @@ int main ()
     cout << "------------------------\n\n";
 
     cout << "Translating(Morse to English): \n\n";
-  //  for (int i = 0; i < userMorseInput.length(); i++) {
-        int leftPosit = 0;// begin position of the substring function call
-        int rightPosit = userMorseInput.find(" ");
 
-        cout << rightPosit << endl;
+    string engOutput = "";
+    string currentMorse = "";
+    istringstream morseToEngl(userMorseInput);
+    cout << userMorseInput << endl;
 
-        for ( int j = 0; j < 4; j++) {
-            if (userMorseInput.substr(leftPosit, rightPosit) == morseRef[j])
-                cout << englishRef.at(j);
+    int i = 0;
+    while (morseToEngl >> currentMorse) {
+        cout << currentMorse << endl;
+        while (i < SIZE) {
+            if (currentMorse == morseRef[i])
+                cout << englishRef.at(i);
+            else
+                cout << "X";
+            i++;
         }
-
-        leftPosit = rightPosit;
-        rightPosit = userMorseInput.substr(leftPosit, userMorseInput.length()-1).find(" ");
-
-        cout << rightPosit;
-
-//    }// end for loop
+    }
 
 }//end main
