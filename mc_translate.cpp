@@ -3,17 +3,31 @@
 #include <sstream>
 using namespace std;
 
+void greeting() {
+    cout << "\n\n  __  __                             ____            _        \n"
+         << " |  \\/  |  ___   _ __  ___   ___    / ___| ___    __| |  ___  \n"
+         << " | |\\/| | / _ \\ | '__|/ __| / _ \\  | |    / _ \\  / _` | / _ \\ \n"
+         << " | |  | || (_) || |   \\__ \\|  __/  | |___| (_) || (_| ||  __/ \n"
+         << " |_|__|_| \\___/ |_|   |___/ \\___|   \\____|\\___/  \\__,_| \\___| \n"
+         << " |_   _|__ _  _ __   ___ | |  __ _ | |_  ___   _ __           \n"
+         << "   | | / _` || '_ \\ / __|| | / _` || __|/ _ \\ | '__|          \n"
+         << "   | || (_| || | | |\\__ \\| || (_| || |_| (_) || |             \n"
+         << "   |_| \\__,_||_| |_||___/|_| \\__,_| \\__|\\___/ |_|             \n"
+         << "                                                              \n";
+}
+
 int main ()
 {
-    const int SIZE = 4;
+    const int SIZE = 27;
     string englishRef = " abcdefghijklmnopqrstuvwxyz";// English letter for reference(for now)
     string morseRef[SIZE] = {"/", ".-", "-...", "-.-.", "-..", ".", "..-.", "--.", "....", "..", ".---", "-.-", ".-..",
-                             "--", "-.", "---", ".--.", "--.-", ".-.", "...", "-", "..-", "...-", ".--", "-..-", "-.--", "--.."};// Morse code reference(for now)
+                         "--", "-.", "---", ".--.", "--.-", ".-.", "...", "-", "..-", "...-", ".--", "-..-", "-.--", "--.."};// Morse code reference(for now)
 
-    string userInput = "abc eeee ab cb cd ec eeee ab c eeee ab ";// user input for testing(for now)
-    string userMorseInput = ".- -... -... / .- ..";// user input for testing(for now)
+    string userInput = "abcdefghijklmnopqrstuvwxyz";// user input for testing(for now)
+    string userMorseInput = ".- -... -.-. -.. . / ..-. ..- -.-. -.-";// user input for testing(for now)
     int linePosit = 0;
 
+    greeting();
     // for loop for testing purpose only
     cout << "Testing: \n";
     for (int i = 0; i < userInput.length(); i++) {
