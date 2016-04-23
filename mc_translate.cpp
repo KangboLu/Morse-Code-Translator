@@ -6,8 +6,9 @@ using namespace std;
 int main ()
 {
     const int SIZE = 4;
-    string englishRef = " abc";// English letter for reference(for now)
-    string morseRef[SIZE] = {"/", ".-","-...","-.-."};// Morse code reference(for now)
+    string englishRef = " abcdefghijklmnopqrstuvwxyz";// English letter for reference(for now)
+    string morseRef[SIZE] = {"/", ".-", "-...", "-.-.", "-..", ".", "..-.", "--.", "....", "..", ".---", "-.-", ".-..",
+                             "--", "-.", "---", ".--.", "--.-", ".-.", "...", "-", "..-", "...-", ".--", "-..-", "-.--", "--.."};// Morse code reference(for now)
 
     string userInput = "abc eeee ab cb cd ec eeee ab c eeee ab ";// user input for testing(for now)
     string userMorseInput = ".- -... -... / .- ..";// user input for testing(for now)
