@@ -4,8 +4,9 @@ int main ()
 {
     // user input for testing(for now)
 
-    greeting();
-    userMenu();
+ //   greeting();
+   // userMenu();
+    FiletoFile();
     /*
     EnglishToMorse(textInput);
     MorseToEnglish(textInput);
