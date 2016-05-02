@@ -91,6 +91,16 @@ void MorseToEnglish() {
     }// end while
 }
 
+void FiletoFile() {
+    string tempReading;
+    ifstream readFile("translate.txt");
+    ofstream creatFile("translated.txt");
+    while (getline(readFile, tempReading)) {
+        cout << tempReading << "\n";
+        creatFile << tempReading << "\n";
+    }// end while
+}
+
 void continueTrans() {
     cout << "Do you want to continue translate: 1 yes, 0 no: ";
     cin >> userChoice;
