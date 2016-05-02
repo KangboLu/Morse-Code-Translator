@@ -1,10 +1,12 @@
-#include "mc_tranlate.hpp"
+#include "mc_translate.hpp"
 
 int main ()
 {
-    string textInput = "";// user input for testing(for now)
+    // user input for testing(for now)
 
     greeting();
+    userMenu();
+    /*
     EnglishToMorse(textInput);
     MorseToEnglish(textInput);
     // for loop for testing purpose only
