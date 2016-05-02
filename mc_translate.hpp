@@ -48,9 +48,9 @@ void EnglishToMorse() {
             cout << "X ";
 
         // if loop for adding new line after 10th character Morse Code translation
-        if ((linePosit + 1) / 10) {
+        if ((linePosit + 1) / 12) {
             cout << "\n";
-            linePosit = (linePosit+1) % 10;// reset linePosit to 0
+            linePosit = (linePosit+1) % 12;// reset linePosit to 0
             cout << "Line Position is: " << linePosit << "\n\n";
         }// end if loop
 
@@ -99,7 +99,7 @@ void continueTrans() {
 void userMenu() {
 
     while (userChoice) {
-        cout << "\t\t\tHere is your user menu:\n\n"
+        cout << "\t\t\tHere is your user menu:\n\n\n"
          << "1. Translate English to Morse Code\n"
          << "2. Translate Morse code to English\n"
          << "3. Translate from File to File\n"
