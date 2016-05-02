@@ -7,6 +7,8 @@ using namespace std;
 
 const int SIZE = 27;
 int linePosit = 0;
+int userChoice = 5;
+
 string englishRef = " abcdefghijklmnopqrstuvwxyz";// English letter for reference(for now)
 string morseRef[SIZE] = {"/", ".-", "-...", "-.-.", "-..", ".", "..-.", "--.", "....", "..", ".---", "-.-", ".-..",
                          "--", "-.", "---", ".--.", "--.-", ".-.", "...", "-", "..-", "...-", ".--", "-..-", "-.--", "--.."};// Morse code reference(for now)
@@ -27,40 +29,9 @@ void greeting() {
          system("cls");
 }
 
-void userMenu() {
-    cout << "\t\t\tHere is your user menu:\n\n"
-         << "1. Translate English to Morse Code\n"
-         << "2. Translate Morse code to English\n"
-         << "3. Translate from File to File\n"
-         << "4. Leave the dark console screen\n\n"
-         << "Tell me about what's your choice: ";
-
-    int userChoice = 0;
-    cin >> userChoice;
-
-    while (!userChoice) {
-
-        switch(userChoice) {
-            case 1:
-                cout << "You chose to translate English to Morse" << endl;
-            case 2:
-                cout << "You chose to translate Morse to English" << endl;
-            case 3:
-                cout << "You chose to translate File to File" << endl;
-            case 4:
-                cout << "You chose to leave" << endl;
-
-        }
-
-    }
-
-
-    cin.get();
-    system("cls");
-}
-
 // function to translate English to Morse
-void EnglishToMorse(string userInput) {
+void EnglishToMorse() {
+    string userInput = "";
     cout << "\t\t\tWhat you like to translate: \n\t\t\t    (English to Morse)\n" << endl;
     getline(cin,userInput);
 
@@ -86,12 +57,11 @@ void EnglishToMorse(string userInput) {
     }//end for loop
     cout << "\nEnd position is " << linePosit <<endl;// for testing purpose
     cout << "------------------------\n\n";
-    cin.get();
-    system("cls");
 }
 
 // function to translate Morse to English
-void MorseToEnglish(string userInput) {
+void MorseToEnglish() {
+    string userInput = "";
     cout << "\t\t\tWhat you like to translate: \n\t\t\t    (Morse to English)\n" << endl;
     getline(cin,userInput);
 
@@ -120,3 +90,49 @@ void MorseToEnglish(string userInput) {
     }// end while
 }
 
+void continueTrans() {
+    cout << "Do you want to continue translate: 1 yes, 0 no: ";
+    cin >> userChoice;
+    system("cls");
+}
+
+void userMenu() {
+
+    while (userChoice) {
+        cout << "\t\t\tHere is your user menu:\n\n"
+         << "1. Translate English to Morse Code\n"
+         << "2. Translate Morse code to English\n"
+         << "3. Translate from File to File\n"
+         << "4. Leave the dark console screen\n\n"
+         << "Tell me about what's your choice: ";
+
+        cin >> userChoice;
+
+        switch(userChoice) {
+            case 1:
+                cout << "You chose to translate English to Morse\n";
+                cin.get();
+                system("cls");
+                EnglishToMorse();
+                break;
+            case 2:
+                cout << "You chose to translate Morse to English\n";
+                cin.get();
+                system("cls");
+                MorseToEnglish();
+                break;
+
+            case 3:
+                cout << "You chose to translate File to File" << endl;
+            case 4:
+                cout << "You chose to leave" << endl;
+                userChoice = 0;
+        }
+
+        continueTrans();
+    }
+
+
+    cin.get();
+    system("cls");
+}
