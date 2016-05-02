@@ -6,7 +6,6 @@
 using namespace std;
 
 const int SIZE = 27;
-int linePosit = 0;
 int userChoice = 5;
 
 string englishRef = " abcdefghijklmnopqrstuvwxyz";// English letter for reference(for now)
@@ -31,6 +30,7 @@ void greeting() {
 
 // function to translate English to Morse
 void EnglishToMorse() {
+    int linePosit = 1;
     string userInput = "";
     cout << "\t\t\tWhat you like to translate: \n\t\t\t    (English to Morse)\n" << endl;
     getline(cin,userInput);
@@ -48,19 +48,20 @@ void EnglishToMorse() {
             cout << "X ";
 
         // if loop for adding new line after 10th character Morse Code translation
-        if ((linePosit + 1) / 12) {
+        if (linePosit / 12) {
             cout << "\n";
-            linePosit = (linePosit+1) % 12;// reset linePosit to 0
+            linePosit = 0;//(linePosit+1) % 12;// reset linePosit to 0
             cout << "Line Position is: " << linePosit << "\n\n";
         }// end if loop
 
     }//end for loop
-    cout << "\nEnd position is " << linePosit <<endl;// for testing purpose
+    cout << "\nEnd position is " << linePosit-1 <<endl;// for testing purpose
     cout << "------------------------\n\n";
 }
 
 // function to translate Morse to English
 void MorseToEnglish() {
+    int linePosit = 0;
     string userInput = "";
     cout << "\t\t\tWhat you like to translate: \n\t\t\t    (Morse to English)\n" << endl;
     getline(cin,userInput);
