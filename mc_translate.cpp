@@ -4,12 +4,10 @@ int main ()
 {
     // user input for testing(for now)
 
- //   greeting();
-   // userMenu();
-    FiletoFile();
-    /*
-    EnglishToMorse(textInput);
-    MorseToEnglish(textInput);
+    greeting();
+    userMenu();
+   // MorseToEnglish();
+
     // for loop for testing purpose only
     /*
     cout << "Testing: \n";

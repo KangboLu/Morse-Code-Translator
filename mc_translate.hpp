@@ -106,12 +106,11 @@ void FileMorseToEngl() {
     creatFile << " ------------------------------------\n"
               << "|   Your Translated Text is Here     |\n"
               << " ------------------------------------\n";
+    string currentMorse = "";
 
     while (getline(readFile, tempReading)) {
 
-        string currentMorse = "";
         istringstream morseToEngl(tempReading);
-
         while (morseToEngl >> currentMorse) {
             int i = 0;// counter for looping the morseRef array
             int flag = 1;// flag for checking if the morse code exists in reference
@@ -129,9 +128,9 @@ void FileMorseToEngl() {
             if (flag)
                 creatFile << "X";
 
-            if (linePosit / 15) {
+            if ((linePosit/2) / 25) {
                 creatFile << "\n";
-                linePosit = 0;// reset linePosit to 0
+                linePosit = 1;// reset linePosit to 0
             }//
 
             flag = 1;
