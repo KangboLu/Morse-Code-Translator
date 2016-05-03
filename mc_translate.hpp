@@ -50,7 +50,7 @@ void EnglishToMorse() {
         // if loop for adding new line after 10th character Morse Code translation
         if (linePosit / 12) {
             cout << "\n";
-            linePosit = 0;//(linePosit+1) % 12;// reset linePosit to 0
+            linePosit = 0;// reset linePosit to 0
             cout << "Line Position is: " << linePosit << "\n\n";
         }// end if loop
 
@@ -61,7 +61,7 @@ void EnglishToMorse() {
 
 // function to translate Morse to English
 void MorseToEnglish() {
-    int linePosit = 0;
+    int linePosit = 1;
     string userInput = "";
     cout << "\t\t\tWhat you like to translate: \n\t\t\t    (Morse to English)\n" << endl;
     getline(cin,userInput);
@@ -70,6 +70,7 @@ void MorseToEnglish() {
 
     string engOutput = "";
     string currentMorse = "";
+
     istringstream morseToEngl(userInput);
     cout << userInput << endl;
 
@@ -83,15 +84,22 @@ void MorseToEnglish() {
                 break;
             }
             i++;
+            linePosit++;
         }// end inner while
         // if not exist in reference, output capital "X"
         if (flag)
             cout << "X";
+
+        if (linePosit / 12) {
+            cout << "\n";
+            linePosit = 0;// reset linePosit to 0
+        }//
+
         flag = 1;
     }// end while
 }
 
-void FiletoFile() {
+void FileEnglToMorse() {
     int linePosit = 1;
     string tempReading;
     ifstream readFile("translate.txt");
