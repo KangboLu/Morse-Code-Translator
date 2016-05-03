@@ -96,6 +96,7 @@ void MorseToEnglish() {
     }// end while
 }
 
+// function to translate Morse file to English file
 void FileMorseToEngl() {
     int linePosit = 1;
     string tempReading;
@@ -128,7 +129,7 @@ void FileMorseToEngl() {
             if (flag)
                 creatFile << "X";
 
-            if (linePosit / 12) {
+            if (linePosit / 15) {
                 creatFile << "\n";
                 linePosit = 0;// reset linePosit to 0
             }//
@@ -140,6 +141,7 @@ void FileMorseToEngl() {
     cout << "Translation is completed" << endl;
 }
 
+// function to translate English file to Morse file
 void FileEnglToMorse() {
     int linePosit = 1;
     string tempReading;
@@ -163,7 +165,7 @@ void FileEnglToMorse() {
             else
                 creatFile << "X ";
 
-            if (linePosit / 12) {
+            if (linePosit / 15) {
                 creatFile << "\n";
                 linePosit = 0;//(linePosit+1) % 12;// reset linePosit to 0
             }// end i
@@ -173,20 +175,22 @@ void FileEnglToMorse() {
     cout << "Translation is completed" << endl;
 }
 
+// function to check continue translation
 void continueTrans() {
     cout << "Do you want to continue translate: 1 yes, 0 no: ";
     cin >> userChoice;
     system("cls");
 }
 
+// function to display menu for user choices
 void userMenu() {
 
     while (userChoice) {
         cout << "\t\t\tHere is your user menu:\n\n\n"
          << "1. Translate English to Morse Code\n"
          << "2. Translate Morse code to English\n"
-         << "3. Translate from File to File\n"
-         << "4. Leave the dark console screen\n\n"
+         << "3. English File to Morse Code File\n"
+         << "4. Morse Code File to English File\n\n"
          << "Tell me about what's your choice: ";
 
         cin >> userChoice;
@@ -208,9 +212,11 @@ void userMenu() {
             case 3:
                 cout << "Translate English File -> Morse Code File\n" << endl;
                 FileEnglToMorse();
+                break;
             case 4:
                 cout << "Translate Morse Code File -> English File\n" << endl;
                 FileMorseToEngl();
+                break;
         }
 
         continueTrans();
