@@ -92,13 +92,36 @@ void MorseToEnglish() {
 }
 
 void FiletoFile() {
+    int linePosit = 1;
     string tempReading;
     ifstream readFile("translate.txt");
     ofstream creatFile("translated.txt");
+
+    creatFile << " ------------------------------------\n"
+              << "|   Your Translated Text is Here     |\n"
+              << " ------------------------------------\n";
+
     while (getline(readFile, tempReading)) {
-        cout << tempReading << "\n";
-        creatFile << tempReading << "\n";
+
+        for (int i = 0; i < tempReading.length(); i++, linePosit++) {
+
+            // Fining position by comparing englishRef and userInput
+            int findPosit = englishRef.find(tempReading.at(i));
+
+            //output Morse code translation
+            if (findPosit+1)
+                creatFile << morseRef[findPosit] << " ";
+            else
+                creatFile << "X ";
+
+            if (linePosit / 12) {
+                creatFile << "\n";
+                linePosit = 0;//(linePosit+1) % 12;// reset linePosit to 0
+            }// end i
+        }
     }// end while
+
+    cout << "Translation is completed" << endl;
 }
 
 void continueTrans() {
