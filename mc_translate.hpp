@@ -5,12 +5,13 @@
 #include <sstream>
 using namespace std;
 
-const int SIZE = 27;
+const int SIZE = 37;
 int userChoice = 5;
 
-string englishRef = " abcdefghijklmnopqrstuvwxyz";// English letter for reference(for now)
+string englishRef = " abcdefghijklmnopqrstuvwxyz0123456789";// English letter for reference(for now)
 string morseRef[SIZE] = {"/", ".-", "-...", "-.-.", "-..", ".", "..-.", "--.", "....", "..", ".---", "-.-", ".-..",
-                         "--", "-.", "---", ".--.", "--.-", ".-.", "...", "-", "..-", "...-", ".--", "-..-", "-.--", "--.."};// Morse code reference(for now)
+                         "--", "-.", "---", ".--.", "--.-", ".-.", "...", "-", "..-", "...-", ".--", "-..-", "-.--", "--..",
+                         "-----", ".----", "..---", "...--", "....-", ".....", "-....", "--...", "---..", "----."};// Morse code reference
 // function for greeting
 void greeting() {
     cout << "\n\n\n\n\n           __  __                             ____            _        \n"
@@ -51,11 +52,11 @@ void EnglishToMorse() {
         if (linePosit / 12) {
             cout << "\n";
             linePosit = 0;// reset linePosit to 0
-            cout << "Line Position is: " << linePosit << "\n\n";
+        //    cout << "Line Position is: " << linePosit << "\n\n";
         }// end if loop
 
     }//end for loop
-    cout << "\nEnd position is " << linePosit-1 <<endl;// for testing purpose
+ //   cout << "\nEnd position is " << linePosit-1 <<endl;// for testing purpose
     cout << "------------------------\n\n";
 }
 
@@ -66,33 +67,40 @@ void MorseToEnglish() {
     cout << "\t\t\tWhat you like to translate: \n\t\t\t    (Morse to English)\n" << endl;
     getline(cin,userInput);
 
-    cout << "\nTranslating(Morse to English): \n\n";
-
     string currentMorse = "";
     istringstream morseToEngl(userInput);
 
     while (morseToEngl >> currentMorse) {
         int i = 0;// counter for looping the morseRef array
         int flag = 1;// flag for checking if the morse code exists in reference
-        while (i < SIZE) {
-            if (currentMorse == morseRef[i]) {
-                cout << englishRef.at(i);
-                flag = 0;
-                break;
-            }
+
+        for (int m = 0; m < currentMorse.length(); m++) {
+            // find the same morse code to convert it to English letter
+            while (i < SIZE) {
+
+                if (currentMorse == morseRef[i]) {
+                    cout << englishRef.at(i);
+                    flag = 0;
+                    //print a new line if too many characters printed
+                    if (linePosit > 12) {
+                        cout << "\n";
+                        linePosit = 0;// reset linePosit to 0
+                    }
+                linePosit++;
+                }
             i++;
-            linePosit++;
-        }// end inner while
-        // if not exist in reference, output capital "X"
-        if (flag)
-            cout << "X";
-
-        if (linePosit / 12) {
-            cout << "\n";
-            linePosit = 0;// reset linePosit to 0
-        }//
-
-        flag = 1;
+            }// end while
+            // if not found, translate it to X
+            if (flag) {
+                cout << "X";
+                //print a new line if too many characters printed
+                if (linePosit > 12) {
+                    cout << "\n";
+                    linePosit = 0;// reset linePosit to 0
+                }
+                linePosit++;
+            }
+        }// end for loop
     }// end while
 }
 
