@@ -183,7 +183,7 @@ void FileEnglToMorse() {
 }
 
 // function to check continue translation
-void continueTrans() {
+void continueTranslate() {
     cout << "Do you want to continue translate: 1 yes, 0 no: ";
     cin >> userChoice;
     system("cls");
@@ -226,7 +226,7 @@ void userMenu() {
                 break;
         }
 
-        continueTrans();
+        continueTranslate();
     }
 
 
