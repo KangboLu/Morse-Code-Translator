@@ -2,8 +2,10 @@
 
 int main ()
 {
-    //greeting();
-    //userMenu();
+    greeting();
+    userMenu();
     //EnglishToMorse();
-    MorseToEnglish();
+    //MorseToEnglish();
+   // FileMorseToEngl();
+   //FileEnglToMorse();
 }//end main
