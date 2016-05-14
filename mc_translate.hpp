@@ -5,13 +5,14 @@
 #include <sstream>
 using namespace std;
 
-const int SIZE = 37;
+const int SIZE = 39;
 int userChoice = 5, innerUserChoice;
 
-string englishRef = " abcdefghijklmnopqrstuvwxyz0123456789";// English letter for reference(for now)
+string englishRef = " abcdefghijklmnopqrstuvwxyz0123456789,.";// English letter for reference(for now)
 string morseRef[SIZE] = {"/", ".-", "-...", "-.-.", "-..", ".", "..-.", "--.", "....", "..", ".---", "-.-", ".-..",
                          "--", "-.", "---", ".--.", "--.-", ".-.", "...", "-", "..-", "...-", ".--", "-..-", "-.--", "--..",
-                         "-----", ".----", "..---", "...--", "....-", ".....", "-....", "--...", "---..", "----."};// Morse code reference
+                         "-----", ".----", "..---", "...--", "....-", ".....", "-....", "--...", "---..", "----.", "--..--",
+                         ".-.-.-"};// Morse code reference
 // function for greeting
 void greeting() {
     cout << "\n\n\n\n\n           __  __                             ____            _        \n"
@@ -191,14 +192,13 @@ void FileEnglToMorse() {
 
 // function to check continue translation
 void continueTranslate() {
-    cout << "\n\nDo you want to continue translate: 1 yes, 0 no: ";
+    cout << "\n\n  Do you want to continue translate: 1 yes, 0 no: ";
     cin >> userChoice;
     system("cls");
 }
 
 // function to display menu for user choices
 void userMenu() {
-
 
     while (userChoice) {
        cout << "\n\n\n"
@@ -229,7 +229,7 @@ void userMenu() {
                      << "  1. English to Morse\n"
                      << "  2. Morse to English\n"
                      << "----------------------------\n"
-                     << "\nTell me about your choice: " << endl;
+                     << "\n  Tell me about your choice: " << endl;
 
                 cin >> innerUserChoice;
 
@@ -268,7 +268,7 @@ void userMenu() {
 
                 break;
             default:
-                cout << "You entered a !!invalid!! choice.\nPlease press a valid choice to enter menu!";
+                cout << "  You entered a *INVALID* choice. Please press a valid choice to enter menu!";
                 break;
         }// end witch statement
 
