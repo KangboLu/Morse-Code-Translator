@@ -5,14 +5,14 @@
 #include <sstream>
 using namespace std;
 
-const int SIZE = 43;
+const int SIZE = 47;
 int userChoice = 5, innerUserChoice;
 
-string englishRef = " abcdefghijklmnopqrstuvwxyz0123456789,.;:?!";// English letter for reference(for now)
+string englishRef = " abcdefghijklmnopqrstuvwxyz0123456789,.;:?!'()";// English letter for reference(for now)
 string morseRef[SIZE] = {"/", ".-", "-...", "-.-.", "-..", ".", "..-.", "--.", "....", "..", ".---", "-.-", ".-..",
                          "--", "-.", "---", ".--.", "--.-", ".-.", "...", "-", "..-", "...-", ".--", "-..-", "-.--", "--..",
                          "-----", ".----", "..---", "...--", "....-", ".....", "-....", "--...", "---..", "----.", "--..--",
-                         ".-.-.-", "-.-.-.", "---...", "..--..", "---."};// Morse code reference
+                         ".-.-.-", "-.-.-.", "---...", "..--..", "---.", ".----.", "-.--.", "-.--.-"};// Morse code reference
 // function for greeting
 void greeting() {
     cout << "\n\n\n\n\n           __  __                             ____            _        \n"
@@ -108,7 +108,7 @@ void FileMorseToEngl() {
     int linePosit = 1;
     string tempReading;
     ifstream readFile("translate.txt");
-    ofstream creatFile("-translated-.txt");
+    ofstream creatFile("translatedEn.txt");
 
     string currentMorse = "";
 
@@ -129,11 +129,11 @@ void FileMorseToEngl() {
                         creatFile << englishRef.at(i);
                         flag = 0;
                         //print a new line if too many characters printed
-                        if (linePosit > 12) {
+                 /*       if (linePosit > 12) {
                             creatFile << "\n";
                             linePosit = 0;// reset linePosit to 0
                         }
-                    linePosit++;
+                    linePosit++;*/
                     }
                 i++;
                 }// end while
@@ -141,18 +141,20 @@ void FileMorseToEngl() {
                 if (flag) {
                     creatFile << "X";
                     //print a new line if too many characters printed
-                    if (linePosit > 12) {
+/*                    if (linePosit > 20) {
                         creatFile << "\n";
                         linePosit = 0;// reset linePosit to 0
                     }
-                    linePosit++;
+                    linePosit++;*/
                 }
             }// end for loop
         }// end inner while
+
+        creatFile << "\n";
     }// end outer while
-    cout << "\n\n\t\t      ---------------------------------\n"
-              << "\t\t     |     Your Text is Translated     |\n"
-              << "\t\t      ---------------------------------\n\n"
+    cout << "\n\n\t\t      --------------------------------------------\n"
+              << "\t\t     |     Your Text is Translated to English    |\n"
+              << "\t\t      -------------------------------------------\n\n"
               << "\t\t     Please check your current directory\n\n\n\n\n\n" << endl;
 
 }
@@ -162,7 +164,7 @@ void FileEnglToMorse() {
     int linePosit = 1;
     string tempReading;
     ifstream readFile("translate.txt");
-    ofstream creatFile("*translated*.txt");
+    ofstream creatFile("translatedMor.txt");
 
     while (getline(readFile, tempReading)) {
 
@@ -176,17 +178,18 @@ void FileEnglToMorse() {
                 creatFile << morseRef[findPosit] << " ";
             else
                 creatFile << "X ";
-
-            if (linePosit > 15) {
+/*
+            if (linePosit > 18) {
                 creatFile << "\n";
                 linePosit = 0;//(linePosit+1) % 12;// reset linePosit to 0
-            }// end i
+            }// end i*/
         }
+        creatFile << "\n";
     }// end while
 
-    cout << "\n\n\t\t      ---------------------------------\n"
-              << "\t\t     |     Your Text is Translated     |\n"
-              << "\t\t      ---------------------------------\n\n"
+    cout << "\n\n\t\t      -----------------------------------------------\n"
+              << "\t\t     |     Your Text is Translated to Morse Code    |\n"
+              << "\t\t      ----------------------------------------------\n\n"
               << "\t\t     Please check your current directory" << endl;
 }
 
