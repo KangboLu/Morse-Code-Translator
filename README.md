@@ -9,4 +9,6 @@
 
 3. Input English text file and translate it into Morse Code text file, and vice versa.
 
-Please name your file "translate.txt", so the translated file would be "translated.txt"
+Please name your file to be "translate.txt" for translation. 
+
+
