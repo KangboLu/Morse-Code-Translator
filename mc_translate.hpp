@@ -5,14 +5,14 @@
 #include <sstream>
 using namespace std;
 
-const int SIZE = 39;
+const int SIZE = 43;
 int userChoice = 5, innerUserChoice;
 
-string englishRef = " abcdefghijklmnopqrstuvwxyz0123456789,.";// English letter for reference(for now)
+string englishRef = " abcdefghijklmnopqrstuvwxyz0123456789,.;:?!";// English letter for reference(for now)
 string morseRef[SIZE] = {"/", ".-", "-...", "-.-.", "-..", ".", "..-.", "--.", "....", "..", ".---", "-.-", ".-..",
                          "--", "-.", "---", ".--.", "--.-", ".-.", "...", "-", "..-", "...-", ".--", "-..-", "-.--", "--..",
                          "-----", ".----", "..---", "...--", "....-", ".....", "-....", "--...", "---..", "----.", "--..--",
-                         ".-.-.-"};// Morse code reference
+                         ".-.-.-", "-.-.-.", "---...", "..--..", "---."};// Morse code reference
 // function for greeting
 void greeting() {
     cout << "\n\n\n\n\n           __  __                             ____            _        \n"
