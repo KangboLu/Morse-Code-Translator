@@ -6,7 +6,7 @@
 using namespace std;
 
 const int SIZE = 47;
-int userChoice = 5, innerUserChoice;
+int userChoice = 5;
 
 string englishRef = " abcdefghijklmnopqrstuvwxyz0123456789,.;:?!'()";// English letter for reference(for now)
 string morseRef[SIZE] = {"/", ".-", "-...", "-.-.", "-..", ".", "..-.", "--.", "....", "..", ".---", "-.-", ".-..",
@@ -152,10 +152,10 @@ void FileMorseToEngl() {
 
         creatFile << "\n";
     }// end outer while
-    cout << "\n\n\t\t      --------------------------------------------\n"
-              << "\t\t     |     Your Text is Translated to English    |\n"
-              << "\t\t      -------------------------------------------\n\n"
-              << "\t\t     Please check your current directory\n\n\n\n\n\n" << endl;
+    cout << "\n\n\t\t  -------------------------------------------\n"
+              << "\t\t |     Your Text is Translated to English    |\n"
+              << "\t\t  -------------------------------------------\n\n"
+              << "\t\t      Please check your current directory\n\n\n\n\n\n" << endl;
 
 }
 
@@ -187,15 +187,15 @@ void FileEnglToMorse() {
         creatFile << "\n";
     }// end while
 
-    cout << "\n\n\t\t      -----------------------------------------------\n"
-              << "\t\t     |     Your Text is Translated to Morse Code    |\n"
-              << "\t\t      ----------------------------------------------\n\n"
-              << "\t\t     Please check your current directory" << endl;
+    cout << "\n\n\t\t ----------------------------------------------\n"
+              << "\t\t|     Your Text is Translated to Morse Code    |\n"
+              << "\t\t ----------------------------------------------\n\n"
+              << "\t\t      Please check your current directory" << endl;
 }
 
 // function to check continue translation
 void continueTranslate() {
-    cout << "\n\nDo you want to continue translate: 1 yes, 0 no: ";
+    cout << "\n\nContinue translate: 1 yes, 0 no: ";
     cin >> userChoice;
 
     system("cls");
@@ -203,6 +203,8 @@ void continueTranslate() {
 
 // function to display menu for user choices
 void userMenu() {
+    string innerUserChoice;
+    string errorMsg = "";
 
     while (userChoice) {
        cout << "\n\n\n"
@@ -225,24 +227,34 @@ void userMenu() {
         switch(userChoice) {
 
             case 1:// instant translation menu
-                cin.get();
-                system("cls");
 
-                cout << "\n\n  Instant Translation:\n"
-                     << "----------------------------\n\n"
-                     << "  1. English to Morse\n"
-                     << "  2. Morse to English\n"
-                     << "----------------------------\n"
-                     << "\n  Tell me about your choice: ";
+                while (true){
+                    cin.get();
+                    system("cls");
 
-                cin >> innerUserChoice;
+                    cout << "\n\n  Instant Translation:\n"
+                         << "----------------------------\n\n"
+                         << "  1. English to Morse\n"
+                         << "  2. Morse to English\n"
+                         << "----------------------------\n"
+                         << errorMsg
+                         << "\n  Tell me about your choice: ";
+                    cin >> innerUserChoice;
 
-                if (innerUserChoice == 1) {
+                    if (innerUserChoice == "1" || innerUserChoice == "2") {
+                        errorMsg = "";
+                        break;
+                    }
+                    else
+                        errorMsg = "  Invalid input! Please enter integer 1 or 2 to select!\n";
+                }
+
+                if (innerUserChoice == "1") {
                     cin.get();
                     system("cls");
                     EnglishToMorse();
                 }
-                else if (innerUserChoice == 2) {
+                else if (innerUserChoice == "2") {
                     cin.get();
                     system("cls");
                     MorseToEnglish();
@@ -251,20 +263,31 @@ void userMenu() {
                 break;
 
             case 2:// file to file menu
-                cin.get();
-                system("cls");
 
-                cout << "\n\t\t\tFile to File translation:\n\n"
-                     << "\t1. English File to Morse File  2. Morse File to English File" << endl;
+                while (true){
+                    cin.get();
+                    system("cls");
 
-                cin >> innerUserChoice;
+                    cout << "\n\t\t\tFile to File translation:\n\n"
+                         << "\t1. English File to Morse File  2. Morse File to English File\n\n"
+                         << errorMsg
+                         << "\n\tTell me about your choice: ";
+                    cin >> innerUserChoice;
 
-                if (innerUserChoice == 1) {
+                    if (innerUserChoice == "1" || innerUserChoice == "2") {
+                        errorMsg = "";
+                        break;
+                    }
+                    else
+                        errorMsg = "\tInvalid input! Please enter integer 1 or 2 to select!";
+                }
+
+                if (innerUserChoice == "1") {
                     cin.get();
                     system("cls");
                     FileEnglToMorse();
                 }
-                else if (innerUserChoice == 2) {
+                else if (innerUserChoice == "2") {
                     cin.get();
                     system("cls");
                     FileMorseToEngl();
