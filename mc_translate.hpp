@@ -41,7 +41,7 @@ void EnglishToMorse() {
     for (int i = 0; i < userInput.length(); i++, linePosit++) {
 
         // Fining position by comparing englishRef and userInput
-        int findPosit = englishRef.find(userInput.at(i));
+        int findPosit = englishRef.find(tolower(userInput.at(i)));
 
         //output Morse code translation
         if (findPosit+1)
@@ -107,8 +107,8 @@ void MorseToEnglish() {
 void FileMorseToEngl() {
     int linePosit = 1;
     string tempReading;
-    ifstream readFile("translated.txt");
-    ofstream creatFile("translate.txt");
+    ifstream readFile("translate.txt");
+    ofstream creatFile("-translated-.txt");
 
     string currentMorse = "";
 
@@ -162,14 +162,14 @@ void FileEnglToMorse() {
     int linePosit = 1;
     string tempReading;
     ifstream readFile("translate.txt");
-    ofstream creatFile("translated.txt");
+    ofstream creatFile("*translated*.txt");
 
     while (getline(readFile, tempReading)) {
 
         for (int i = 0; i < tempReading.length(); i++, linePosit++) {
 
             // Fining position by comparing englishRef and userInput
-            int findPosit = englishRef.find(tempReading.at(i));
+            int findPosit = englishRef.find(tolower(tempReading.at(i)));
 
             //output Morse code translation
             if (findPosit+1)
@@ -192,8 +192,9 @@ void FileEnglToMorse() {
 
 // function to check continue translation
 void continueTranslate() {
-    cout << "\n\n  Do you want to continue translate: 1 yes, 0 no: ";
+    cout << "\n\nDo you want to continue translate: 1 yes, 0 no: ";
     cin >> userChoice;
+
     system("cls");
 }
 
@@ -216,7 +217,7 @@ void userMenu() {
             << "       |_|    |_|_|\\___|  \\__\\___/  |_|    |_|_|\\___|\n"
             << "\n\n\  Tell me about your choice: ";
 
-        cin >> userChoice;
+            cin >> userChoice;
 
         switch(userChoice) {
 
@@ -229,7 +230,7 @@ void userMenu() {
                      << "  1. English to Morse\n"
                      << "  2. Morse to English\n"
                      << "----------------------------\n"
-                     << "\n  Tell me about your choice: " << endl;
+                     << "\n  Tell me about your choice: ";
 
                 cin >> innerUserChoice;
 
@@ -250,8 +251,8 @@ void userMenu() {
                 cin.get();
                 system("cls");
 
-                cout << "\t\t\tFile to File translation:\n\n"
-                     << "\t1. English File to Morse File   2. Morse File to English File" << endl;
+                cout << "\n\t\t\tFile to File translation:\n\n"
+                     << "\t1. English File to Morse File  2. Morse File to English File" << endl;
 
                 cin >> innerUserChoice;
 
@@ -278,4 +279,14 @@ void userMenu() {
 
     cin.get();
     system("cls");
+
+    cout << "\n\n\n\n\n\n\t       _______ _                 _     __     __         \n"
+         << "\t      |__   __| |               | |    \\ \\   / /         \n"
+         << "\t         | |  | |__   __ _ _ __ | | __  \\ \\_/ /__  _   _ \n"
+         << "\t         | |  | '_ \\ / _` | '_ \\| |/ /   \\   / _ \\| | | |\n"
+         << "\t         | |  | | | | (_| | | | |   <     | | (_) | |_| |\n"
+         << "\t         |_|  |_| |_|\\__,_|_| |_|_|\\_\\    |_|\\___/ \\__,_|\n\n" << endl;
+
+    cin.get();
+
 }
