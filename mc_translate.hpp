@@ -56,7 +56,7 @@ void EnglishToMorse() {
         }// end if loop
 
     }//end for loop
-  //  cout << "\n------------------------\n\n";
+
 }
 
 // function to translate Morse to English
@@ -128,24 +128,12 @@ void FileMorseToEngl() {
                     if (currentMorse == morseRef[i]) {
                         creatFile << englishRef.at(i);
                         flag = 0;
-                        //print a new line if too many characters printed
-                 /*       if (linePosit > 12) {
-                            creatFile << "\n";
-                            linePosit = 0;// reset linePosit to 0
-                        }
-                    linePosit++;*/
                     }
                 i++;
                 }// end while
                 // if not found, translate it to X
                 if (flag) {
                     creatFile << "X";
-                    //print a new line if too many characters printed
-/*                    if (linePosit > 20) {
-                        creatFile << "\n";
-                        linePosit = 0;// reset linePosit to 0
-                    }
-                    linePosit++;*/
                 }
             }// end for loop
         }// end inner while
@@ -178,11 +166,7 @@ void FileEnglToMorse() {
                 creatFile << morseRef[findPosit] << " ";
             else
                 creatFile << "X ";
-/*
-            if (linePosit > 18) {
-                creatFile << "\n";
-                linePosit = 0;//(linePosit+1) % 12;// reset linePosit to 0
-            }// end i*/
+
         }
         creatFile << "\n";
     }// end while
