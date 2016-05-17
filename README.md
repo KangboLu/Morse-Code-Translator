@@ -5,7 +5,7 @@
 
 1. Translate English into Morse Code
 
-2. Tanslate Morse Code into English
+2. Translate Morse Code into English
 
 3. Input English text file and translate it into Morse Code text file, and it works both way.
 
