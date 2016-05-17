@@ -1,5 +1,5 @@
 # Morse-Code-Translator
-### Personal Project to Translate Morse Code Using C++
+### Personal Project to Translate Morse Code Using C++ (Windows Only)
 
 ####Functions: 
 
